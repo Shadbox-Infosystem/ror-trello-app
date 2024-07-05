@@ -1,0 +1,25 @@
+  <%= form_with model: [board, list], data: data, id: "list-form" do |form| %>
+  
+  <% if list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+        <% list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= render Forms::FieldComponent.new(form, :name) do |field| %>
+    <% field.with_input_text(autofocus: true) %>
+  <% end %>    
+
+  <div class="bg-white py-3 flex justify-between max-w-lg">
+    <div> 
+      <%= render Forms::ButtonSubmitComponent.new() %>    
+      <%= render Forms::ButtonCancelComponent.new(cancel_path) if cancel_path %>
+      <%= render Forms::ButtonCancelModalComponent.new() unless cancel_path %>      
+    </div>
+  </div>
+<% end %>

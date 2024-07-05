@@ -1,0 +1,7 @@
+<% content_for :title do %>
+  Create a new board
+<% end %>
+
+<%= render 'form', board: @board, cancel_path: boards_path, data: { turbo: false} %>
+
+

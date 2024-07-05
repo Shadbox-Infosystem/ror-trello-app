@@ -1,0 +1,25 @@
+  <%= form_with model: task, data: data, id: "task-form" do |form| %>
+    <% if task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+        <ul>
+          <% task.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form.hidden_field :list_id, value: task.list_id %>
+  <%= render Forms::FieldComponent.new(form, :name) do |field| %>
+    <% field.with_input_text(autofocus: true) %>
+  <% end %>    
+
+  <div class="bg-white py-3 flex justify-between max-w-lg">
+    <div> 
+      <%= render Forms::ButtonSubmitComponent.new() %>    
+      <%= render Forms::ButtonCancelComponent.new(cancel_path) if cancel_path %>
+      <%= render Forms::ButtonCancelModalComponent.new() unless cancel_path %>      
+    </div>
+  </div>
+  <% end %>

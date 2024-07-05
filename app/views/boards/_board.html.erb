@@ -1,0 +1,6 @@
+  <%= content_tag :div, id: dom_id(board), class:"mb-2" do %>
+    <p>
+      <strong>Board name:</strong>
+      <%= render Button::LinkComponent.new(text: board.name, path: edit_board_path(board)) %>
+    </p>
+  <% end %>

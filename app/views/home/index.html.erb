@@ -1,0 +1,10 @@
+
+ <% content_for :title do %>
+  Rails Trello Clone
+ <% end %>
+<div class="mx-auto max-w-2xl text-center">
+  <p class="mt-6 text-lg leading-8 text-gray-600">Basic trello clone using Ruby on Rails. Click below to get started.</p>
+  <div class="mt-10 flex items-center justify-center gap-x-6">
+    <%= render Button::PrimaryComponent.new(text: "Get started",path: boards_path) %>
+  </div>
+</div>
